@@ -29,7 +29,8 @@
 
 % Title Data
 \title{\textbf{LARGO: Flower Image Generation Using a Denoising Diffusion Model}}
-\author{Zaher Yassin}
+\author{Zaher Yassin \and Boulaouane Salaheddine}
+\date{} % Optional: removes the date from the title page
 \begin{document}
 
 
@@ -84,8 +85,8 @@ The transition kernel at each step is defined as a Gaussian distribution centere
 As the timestep $t$ approaches the total steps $T$, the data $x_0$ is gradually destroyed. If the schedule $\beta_t$ is chosen correctly, and $T$ is sufficiently large (e.g., $T=1000$ in LARGO), the final distribution $x_T$ effectively becomes an isotropic Gaussian $\mathcal{N}(0, \mathbf{I})$.
 \begin{figure}
     \centering
-    \includegraphics[width=0.7\linewidth]{forward.png}
-    \caption{The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise. (Image source: Ho et al. 2020 with a few additional annotations)}
+    \includegraphics[width=0.8\linewidth]{images/Forward_Proccess.png}
+    \caption{The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise.}
     \label{fig:placeholder}
 \end{figure}
 
@@ -170,8 +171,9 @@ This ensures that the model sees an equal number of gradients from Passiflora (r
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.6\linewidth]{Imbalanced.png}
-    \caption{The Reverse Generative Process ($p_\theta$)}
+    \includegraphics[width=0.7\linewidth]{images/Class_imbalance_Largo.png}
+    \caption{Class imbalance problem and LARGO solution: weighted random sampling ensures rare and common classes contribute equally during training.}
+
     \label{fig:placeholder}
 \end{figure}
 
@@ -216,15 +218,23 @@ Or equivalently:
 \end{equation}
 Here, $w$ is the guidance scale.
 
-\textbf{Geometric Interpretation:} The vector $(\epsilon_{cond} - \epsilon_{uncond})$ represents the direction in the score space that points towards the unique features of class $y$ and away from the generic features of the dataset. By scaling this vector by $w>1$, we extrapolate further in that direction, exaggerating the class-specific traits (e.g., making the petals more defined or the colors more vivid).
-
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\linewidth]{CFG.png}
-    \caption{The Reverse Generative Process ($p_\theta$)}
+    \caption{CFG mechanism: conditional score $\epsilon_\theta(x_t, t, y)$ and unconditional score $\epsilon_\theta(x_t, t, \emptyset)$ combined with guidance scale $w$ to produce $\tilde{\epsilon}_\theta(x_t, t, y)$.}
     \label{fig:placeholder}
 \end{figure}
+
+
+\textbf{Geometric Interpretation:} The vector $(\epsilon_{cond} - \epsilon_{uncond})$ represents the direction in the score space that points towards the unique features of class $y$ and away from the generic features of the dataset. By scaling this vector by $w>1$, we extrapolate further in that direction, exaggerating the class-specific traits (e.g., making the petals more defined or the colors more vivid).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/CFG_GOE.png}
+    \caption{Geometric interpretation of classifier-free guidance (CFG).}
+    \label{fig:placeholder}
+\end{figure}
+
 
 
 \subsection{Implementation of Embeddings}
@@ -252,8 +262,15 @@ The backbone of the LARGO system is a customized U-Net. While the U-Net was orig
 The network follows a multi-scale encoder-decoder structure. We chose a resolution of $64 \times 64$ to balance fidelity with training time (approx. 2 minutes per epoch on standard hardware vs 8 minutes for $128 \times 128$).
 
 \textbf{Channel Multipliers:} We define a base channel width $C=64$. The depth of the network increases as the spatial resolution decreases, following the multipliers $[1, 2, 3, 4]$.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Unet.png}
+    \caption{U-Net macro-architecture with multi-scale encoder-decoder, residual blocks, attention, and up/downsampling for $64 \times 64$ input.}
 
-\begin{table}[htbp]
+    \label{fig:placeholder}
+\end{figure}
+
+\begin{table}[H]
     \centering
     \caption{LARGO U-Net Configuration}
     \begin{tabular}{@{}llcl@{}}
@@ -275,12 +292,8 @@ The network follows a multi-scale encoder-decoder structure. We chose a resoluti
 \end{table}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{Unet.png}
-    \caption{The Reverse Generative Process ($p_\theta$)}
-    \label{fig:placeholder}
-\end{figure}
+
+
 
 \subsection{The Residual Block (ResBlock)}
 The ResBlock is the atomic unit of computation. Unlike standard ResNets, the diffusion ResBlock must integrate the time/class embedding.
@@ -299,6 +312,14 @@ The ResBlock is the atomic unit of computation. Unlike standard ResNets, the dif
     \item \textbf{Output:} Path A + Path B.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/res_block.png}
+    \caption{Residual Block (ResBlock) showing feature map and time/class embedding integration with skip connection.}
+
+    \label{fig:placeholder}
+\end{figure}
+
 \textbf{Why Group Norm?} Diffusion models are highly sensitive to internal covariate shift. Batch Normalization introduces dependencies between samples in a batch, which disrupts the noise statistics specific to each image's timestep $t$. Group Normalization is instance-independent and works well with the smaller batch sizes often necessitated by VRAM constraints.
 
 \subsection{Attention Mechanisms}
@@ -312,7 +333,7 @@ This allows the model to correlate distant petals to ensure they belong to the s
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\linewidth]{attentionBlock.png }
+    \includegraphics[width=0.6\linewidth]{attentionBlock.png }
     \caption{The Reverse Generative Process ($p_\theta$)}
     \label{fig:placeholder}
 \end{figure}
@@ -383,6 +404,13 @@ FID measures the distance between the distribution of real images and generated 
     \text{FID} = \|\mu_r - \mu_g\|_2^2 + \text{Tr}(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2})
 \end{equation}
 Lower is Better. Perfect replication = 0.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/FID_EVAL.png}
+    \caption{Fréchet Inception Distance (FID) evaluation pipeline.}
+    \label{fig:placeholder}
+\end{figure}
 
 \textbf{Protocol:} We generate 10,000 images (sampling uniformly across classes) and compare against the full training set stats. Since our model outputs $64 \times 64$, and Inception expects $299 \times 299$, we use bicubic upsampling.
 

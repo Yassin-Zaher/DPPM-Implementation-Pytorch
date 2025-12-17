@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  16 DEC 2025 11:41
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  17 DEC 2025 11:35
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/yassi/OneDrive/Desktop/S1/S3/Generative AI/projet-v1 - Copy/Rapport
@@ -650,21 +650,6 @@ LaTeX Warning: Label `fig:placeholder' multiply defined.
 
 LaTeX Warning: Label `fig:placeholder' multiply defined.
 
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
-
-LaTeX Warning: Label `fig:placeholder' multiply defined.
-
 )
 \openout1 = main.aux
 
@@ -853,11 +838,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 76.
 
-<images/Forward_Proccess.png, id=150, 2826.56pt x 1541.76pt>
+<images/Forward_Proccess.png, id=186, 2782.395pt x 914.41624pt>
 File: images/Forward_Proccess.png Graphic file (type png)
 <use images/Forward_Proccess.png>
 Package luatex.def Info: images/Forward_Proccess.png  used on input line 88.
-(luatex.def)             Requested size: 386.95897pt x 211.06927pt.
+(luatex.def)             Requested size: 483.69687pt x 158.95087pt.
 [2]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -875,11 +860,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 105.
 
-<reverse_t.png, id=170, 2119.92pt x 863.47594pt>
+<reverse_t.png, id=206, 2119.92pt x 863.47594pt>
 File: reverse_t.png Graphic file (type png)
 <use reverse_t.png>
 Package luatex.def Info: reverse_t.png  used on input line 120.
-(luatex.def)             Requested size: 338.58632pt x 137.90863pt.
+(luatex.def)             Requested size: 483.69687pt x 197.01422pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -890,86 +875,100 @@ ding
  []
 
 [4<./reverse_t.png>]
-<images/Class_imbalance_Largo.png, id=196, 2826.56pt x 1541.76pt>
+<images/Class_imbalance_Largo.png, id=233, 2826.56pt x 1541.76pt>
 File: images/Class_imbalance_Largo.png Graphic file (type png)
 <use images/Class_imbalance_Largo.png>
 Package luatex.def Info: images/Class_imbalance_Largo.png  used on input line 1
 74.
 (luatex.def)             Requested size: 338.58632pt x 184.67386pt.
  [5<./images/Class_imbalance_Largo.png>]
-<CFG.png, id=208, 2119.92pt x 775.39688pt>
-File: CFG.png Graphic file (type png)
-<use CFG.png>
-Package luatex.def Info: CFG.png  used on input line 223.
+<images/CFG.png, id=245, 2119.92pt x 775.39688pt>
+File: images/CFG.png Graphic file (type png)
+<use images/CFG.png>
+Package luatex.def Info: images/CFG.png  used on input line 223.
 (luatex.def)             Requested size: 386.95897pt x 141.52945pt.
- [6<./CFG.png>]
-<images/CFG_GOE.png, id=221, 2826.56pt x 1541.76pt>
+ [6<./images/CFG.png>]
+<images/CFG_GOE.png, id=258, 2826.56pt x 1541.76pt>
 File: images/CFG_GOE.png Graphic file (type png)
 <use images/CFG_GOE.png>
 Package luatex.def Info: images/CFG_GOE.png  used on input line 233.
 (luatex.def)             Requested size: 338.58632pt x 184.67386pt.
-
-[7<./images/CFG_GOE.png>]
-<Unet.png, id=234, 2826.56pt x 1541.76pt>
+ [7<./images/CFG_GOE.png>]
+<Unet.png, id=271, 2826.56pt x 1541.76pt>
 File: Unet.png Graphic file (type png)
 <use Unet.png>
 Package luatex.def Info: Unet.png  used on input line 267.
-(luatex.def)             Requested size: 435.32422pt x 237.44118pt.
+(luatex.def)             Requested size: 483.69687pt x 263.83661pt.
  [8<./Unet.png>]
-<images/res_block.png, id=242, 2826.56pt x 1541.76pt>
+<images/res_block.png, id=278, 2826.56pt x 1541.76pt>
 File: images/res_block.png Graphic file (type png)
 <use images/res_block.png>
-Package luatex.def Info: images/res_block.png  used on input line 317.
+Package luatex.def Info: images/res_block.png  used on input line 316.
 (luatex.def)             Requested size: 435.32422pt x 237.44118pt.
-<attentionBlock.png, id=243, 2826.56pt x 1541.76pt>
-File: attentionBlock.png Graphic file (type png)
-<use attentionBlock.png>
-Package luatex.def Info: attentionBlock.png  used on input line 336.
+<images/attentionBlock.png, id=279, 2826.56pt x 1541.76pt>
+File: images/attentionBlock.png Graphic file (type png)
+<use images/attentionBlock.png>
+Package luatex.def Info: images/attentionBlock.png  used on input line 335.
 (luatex.def)             Requested size: 290.22107pt x 158.30196pt.
  [9<./images/res_block.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 367.
- [10<./attentionBlock.png>]
-<images/FID_EVAL.png, id=260, 2826.56pt x 1541.76pt>
+put line 366.
+
+[10<./images/attentionBlock.png>] [11]
+<images/FID_EVAL.png, id=304, 2826.56pt x 1541.76pt>
 File: images/FID_EVAL.png Graphic file (type png)
 <use images/FID_EVAL.png>
-Package luatex.def Info: images/FID_EVAL.png  used on input line 410.
-(luatex.def)             Requested size: 435.32422pt x 237.44118pt.
- [11] [12<./images/FID_EVAL.png>]
+Package luatex.def Info: images/FID_EVAL.png  used on input line 419.
+(luatex.def)             Requested size: 483.69687pt x 263.83661pt.
+<images/real_vs_sampled.png, id=305, 1076.1003pt x 364.9635pt>
+File: images/real_vs_sampled.png Graphic file (type png)
+<use images/real_vs_sampled.png>
+Package luatex.def Info: images/real_vs_sampled.png  used on input line 435.
+(luatex.def)             Requested size: 483.69687pt x 164.04271pt.
+ [12<./images/FID_EVAL.png>]
+<images/kid_score.png, id=312, 1076.1003pt x 364.9635pt>
+File: images/kid_score.png Graphic file (type png)
+<use images/kid_score.png>
+Package luatex.def Info: images/kid_score.png  used on input line 458.
+(luatex.def)             Requested size: 483.69687pt x 164.04271pt.
+ [13<./images/real_vs_sampled.png><./images/kid_score.png>]
+<images/interpolation.png, id=322, 1494.58376pt x 492.84125pt>
+File: images/interpolation.png Graphic file (type png)
+<use images/interpolation.png>
+Package luatex.def Info: images/interpolation.png  used on input line 471.
+(luatex.def)             Requested size: 483.69687pt x 159.49469pt.
+ [14<./images/interpolation.png>] [15]
+Overfull \hbox (2.89838pt too wide) in paragraph at lines 559--560
+[]\TU/TimesNewRoman(0)/b/n/10.95 Tex-ture Smooth-ing: \TU/TimesNewRoman(0)/m/n/
+10.95 As ob-served in the side-by-side com-par-isons, gen-er-ated sam-ples lack high-frequency
+ []
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 463.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 463.
-
-[13] [14]
-Underfull \hbox (badness 1466) in paragraph at lines 553--555
+[16] [17]
+Underfull \hbox (badness 1466) in paragraph at lines 631--633
 []\TU/TimesNewRoman(0)/m/n/10.95 Voxel51/Ox-ford Flow-ers102 Datasets at Hug-gin
 g Face.  []$\TU/lmtt/m/n/10.95 https://huggingface.co/datasets/
  []
 
 
-Underfull \hbox (badness 6741) in paragraph at lines 569--571
+Underfull \hbox (badness 6741) in paragraph at lines 647--649
 []\TU/TimesNewRoman(0)/m/it/10.95 De-nois-ing Dif-fu-sion Prob-a-bilis-tic Model
 \TU/TimesNewRoman(0)/m/n/10.95 .  Keras Ex-am-ples. []$\TU/lmtt/m/n/10.95 https:
 //keras.io/examples/
  []
 
-
-Underfull \hbox (badness 2261) in paragraph at lines 623--625
+[18]
+Underfull \hbox (badness 2261) in paragraph at lines 701--703
 []\TU/TimesNewRoman(0)/m/n/10.95 Hug-ging-Face Dis-cus-sion: Is-sue with DDPM Tr
 ain-ing on Stan-ford Cars.  []$\TU/lmtt/m/n/10.95 https://discuss.
  []
 
-[15]
-Underfull \hbox (badness 6859) in paragraph at lines 636--638
+
+Underfull \hbox (badness 6859) in paragraph at lines 714--716
 []\TU/TimesNewRoman(0)/m/n/10.95 FID - PyTorch-Ignite Doc-u-men-ta-tion.  []$\T
 U/lmtt/m/n/10.95 https://pytorch.org/ignite/generated/ignite.
  []
 
-[16] (./main.aux)
+[19] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -979,20 +978,20 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8E5562F768F6F30AF2CFEBA0AF533001;7270.
+(rerunfilecheck)             Checksum: F5A970F866A13A7FC0A01E9E0F5CEB85;9003.
 )
 
 Here is how much of LuaTeX's memory you used:
- 17025 strings out of 476497
+ 17090 strings out of 476497
  125007,1977958 words of node,token memory allocated
  1006 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 168 attribute, 54 glue_spe
 c, 58 attribute_list, 1 write, 14 pdf_action nodes
-   avail lists: 1:1,2:1520,3:434,4:15,5:326,6:59,7:12227,8:81,9:594,10:9,11:1239
+   avail lists: 1:1,2:1520,3:378,4:13,5:331,6:59,7:12266,8:81,9:515,10:9,11:1245
 
- 38621 multiletter control sequences out of 65536+600000
+ 38660 multiletter control sequences out of 65536+600000
  68 fonts using 21754127 bytes
- 79i,14n,91p,1038b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 79i,14n,91p,1049b,496s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/WINDOWS/Fonts/timesi.ttf><//?/c:/users/yassi/appdata/local/programs/miktex/f
 onts/opentype/public/lm/lmmono10-regular.otf><C:/WINDOWS/Fonts/times.ttf><C:/WIN
 DOWS/Fonts/timesbd.ttf><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1
@@ -1008,9 +1007,9 @@ ers/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 y10.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (16 pages, 41342212 bytes).
+Output written on main.pdf (19 pages, 44149699 bytes).
 
-PDF statistics: 428 PDF objects out of 1000 (max. 8388607)
- 137 named destinations out of 1000 (max. 131072)
- 273 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 491 PDF objects out of 1000 (max. 8388607)
+ 152 named destinations out of 1000 (max. 131072)
+ 345 words of extra memory for PDF output out of 10000 (max. 100000000)
 

@@ -300,11 +300,11 @@ class ResBlock(TimestepBlock):
         down=False,
     ):
         super().__init__()
-        self.channels = channels
-        self.emb_channels = emb_channels
-        self.dropout = dropout
-        self.out_channels = out_channels or channels
-        self.use_conv = use_conv
+        self.channels = channels #64
+        self.emb_channels = emb_channels # 256
+        self.dropout = dropout # 0.1
+        self.out_channels = out_channels or channels # 64
+        self.use_conv = use_conv 
         self.use_checkpoint = use_checkpoint
         self.use_scale_shift_norm = use_scale_shift_norm
 
@@ -601,6 +601,8 @@ class UNetModel(nn.Module):
         self.input_blocks = nn.ModuleList(
             [TimestepEmbedSequential(conv_nd(dims, in_channels, ch, 3, padding=1))]
         )
+
+        
         self._feature_size = ch
         input_block_chans = [ch]
         ds = 1
@@ -786,10 +788,7 @@ def UNet(
         raise ValueError(f"unsupported image size: {image_size}")
 
     attention_ds = []
-    if image_size == 28:
-        attention_resolutions = "28,14,7"
-    else:
-        attention_resolutions = "32,16,8"
+    attention_resolutions = "32,16,8"
     for res in attention_resolutions.split(","):
         attention_ds.append(image_size // int(res))
 

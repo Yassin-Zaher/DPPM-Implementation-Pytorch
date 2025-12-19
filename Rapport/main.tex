@@ -6,7 +6,6 @@
 
 \usepackage[english, bidi=basic, provide=*]{babel}
 
-
 % Set default/Latin font to Sans Serif in the main (rm) slot
 \babelfont{rm}{Times New Roman}
 
@@ -21,25 +20,73 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{subcaption}
 
 % Formatting
 \setlength{\parskip}{0.5em}
 \setlength{\parindent}{0pt}
 \setlist[itemize]{label=-}
 
-% Title Data
-\title{\textbf{LARGO: Flower Image Generation Using a Denoising Diffusion Model}}
-\author{Zaher Yassin \and Boulaouane Salaheddine}
-\date{} % Optional: removes the date from the title page
+% --- START OF DOCUMENT ---
 \begin{document}
 
+% 1. Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
 
-\maketitle
+    {\Large \textbf{Université Ibn Tofail}}\\[0.4cm]
+    {\large Master Informatique et Intelligence Artificielle}
+
+    \vspace{2.5cm}
+
+    {\LARGE \textbf{LARGO: Flower Image Generation Using a Denoising Diffusion Model}}
+
+    \vspace{3cm}
+
+    {\large \textbf{Réalisé par :}}\\[0.3cm]
+    Zaher Yassin\\
+    Boulaouane Salaheddine
+
+    \vspace{2cm}
+
+    {\large \textbf{Encadré par :}}\\[0.3cm]
+    Pr. Tarik HOUICHIME
+
+    \vfill
+\end{titlepage}
+
+% 2. Table of Contents
+\newpage
+\begingroup
+    \small
+    \tableofcontents
+\endgroup
+\newpage
+
+% --- DELETED \maketitle HERE ---
+
+\noindent
+\begin{minipage}[t]{0.60\textwidth}
+    \vspace{0pt} 
+    % 4. Abstract
 \begin{abstract}
-The synthesis of high-fidelity natural images remains a cornerstone challenge in computer vision, particularly when applied to fine-grained domains characterized by high intra-class variance and subtle inter-class morphological distinctions. This report presents \textbf{LARGO} , a comprehensive research initiative dedicated to the implementation and analysis of Denoising Diffusion Probabilistic Models (DDPMs) specifically tailored for the Oxford 102 Flower dataset. Unlike Generative Adversarial Networks (GANs), which struggle with training instability and mode collapse, LARGO leverages the thermodynamic-inspired principles of diffusion to iteratively refine Gaussian noise into coherent botanical structures.
-
-This document provides an exhaustive theoretical and practical treatise on the LARGO system. It details the mathematical derivations of the forward and reverse diffusion processes, explicitly focusing on the conditional generation mechanism via Classifier-Free Guidance (CFG). We analyze the architectural modifications required for the U-Net backbone to accommodate class-conditional embeddings, ensuring semantic fidelity across 102 distinct flower species. Furthermore, we present a rigorous evaluation framework utilizing Fréchet Inception Distance (FID) and Kernel Inception Distance (KID), situating LARGO's performance within the broader landscape of state-of-the-art generative models. The findings suggest that while diffusion models incur a higher computational cost during inference, their ability to model the complex manifold of floral imagery offers superior diversity and structural coherence compared to adversarial baselines.
+    The synthesis of high-fidelity natural images remains a cornerstone challenge in computer vision, particularly in fine-grained domains characterized by high intra-class variance. This report introduces LARGO, a specialized Denoising Diffusion Probabilistic Model (DDPM) framework tailored for the Oxford-102 Flower dataset. Unlike Generative Adversarial Networks (GANs), which often suffer from training instability and mode collapse, LARGO leverages the thermodynamic-inspired principles of diffusion to iteratively refine Gaussian noise into coherent botanical structures.
+    
+    We provide a comprehensive theoretical and practical analysis of the LARGO system, detailing the mathematical derivations of the forward and reverse diffusion processes with a specific focus on conditional generation mechanisms. We analyze the architectural modifications required for the U-Net backbone to accommodate class-conditional embeddings, ensuring semantic fidelity across 102 distinct flower species. Furthermore, we present a rigorous evaluation framework utilizing Fréchet Inception Distance (FID) and Kernel Inception Distance (KID), situating LARGO’s performance within the broader landscape of state-of-the-art generative models. Our findings demonstrate that while diffusion models incur higher inference costs, they offer superior diversity and structural coherence compared to adversarial baselines.
 \end{abstract}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.35\textwidth}
+    \vspace{0pt} 
+    \centering
+    \includegraphics[width=\linewidth]{images/figure1_diversity_grid.png}
+    \captionof{figure}{\textbf{LARGO Diversity.} Uncurated random samples generated at $64\times64$ resolution.}
+    \label{fig:teaser}
+\end{minipage}
+
+\vspace{1cm}
+
 
 
 \section{Introduction}
@@ -394,14 +441,7 @@ The training loop for LARGO incorporates the conditional drop-out logic.
 \end{itemize}
 
 \section{Evaluation Methodology}
-
 Evaluating generative models is notoriously difficult. Unlike classification (Accuracy), there is no single metric for ``realistic flower''. LARGO employs a triad of metrics.
-
-\section{Evaluation and Results}
-
-To assess the quality of the generated images, we employed both quantitative metrics (Fréchet Inception Distance) and qualitative visual inspections (Side-by-Side Comparison and Latent Space Interpolation).
-
-\section{Evaluation and Results}
 
 To assess the quality of the generated images, we employed both quantitative metrics and qualitative visual inspections. 
 

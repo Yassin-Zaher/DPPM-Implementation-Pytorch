@@ -5,86 +5,107 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \babel@aux{english}{}
+\citation{fgia_survey}
+\citation{arxiv2006}
+\citation{oxford102}
+\citation{kaggle_flowers}
+\citation{stylegan}
+\citation{projected_gan}
+\citation{unet_wiki}
+\citation{fid_wiki}
+\citation{ignite_fid}
+\citation{softwaremill}
 \citation{ho2020}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {LARGO Diversity.} Uncurated random samples generated at $64\times 64$ resolution.}}{3}{figure.caption.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {LARGO Diversity.} Uncurated random samples generated at $64\times 64$ resolution.}}{3}{figure.caption.1}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{fig:teaser}{{1}{3}{\textbf {LARGO Diversity.} Uncurated random samples generated at $64\times 64$ resolution}{figure.caption.2}{}}
+\newlabel{fig:teaser}{{1}{3}{\textbf {LARGO Diversity.} Uncurated random samples generated at $64\times 64$ resolution}{figure.caption.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.1}The Evolution of Generative Synthesis}{3}{subsection.1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}The LARGO Initiative}{3}{subsection.1.2}\protected@file@percent }
 \citation{oxford102}
+\citation{stylegan}
+\citation{projected_gan}
+\citation{dhariwal2021}
+\citation{ho2020}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}The LARGO Initiative}{4}{subsection.1.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {1.3}Project Objectives}{4}{subsection.1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}Theoretical Framework: The Physics of Diffusion}{4}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}The Forward Diffusion Process ($q$)}{4}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{4}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Generative Models in Computer Vision}{4}{subsection.2.1}\protected@file@percent }
+\citation{fgia_survey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Diffusion Models vs. GANs}{5}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Fine-Grained Image Analysis (FGIA)}{5}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Theoretical Framework: The Physics of Diffusion}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}The Forward Diffusion Process ($q$)}{5}{subsection.3.1}\protected@file@percent }
+\citation{arxiv2006}
 \citation{ho2020}
 \citation{ho2020}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise.}}{5}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:forward_process}{{2}{5}{The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise}{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}The Reverse Generative Process ($p_\theta $)}{5}{subsection.2.2}\protected@file@percent }
+\citation{arxiv2006}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise.}}{6}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:forward_process}{{2}{6}{The Markov chain of forward (reverse) diffusion process of generating a sample by slowly adding (removing) noise}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Reverse Generative Process ($p_\theta $)}{6}{subsection.3.2}\protected@file@percent }
+\citation{ho2021}
+\citation{ho2021}
+\citation{dhariwal2021}
 \citation{oxford102}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The Reverse Generative Process ($p_\theta $)}}{6}{figure.caption.4}\protected@file@percent }
-\newlabel{fig:Reverse_Generative}{{3}{6}{The Reverse Generative Process ($p_\theta $)}{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}The Optimization Objective}{6}{subsection.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset Analysis: The Oxford 102 Manifold}{6}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Botanical and Visual Statistics}{6}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}The Class Imbalance Challenge}{6}{subsection.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset Statistics and Implications}}{7}{table.caption.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Class imbalance problem and LARGO solution: weighted random sampling ensures rare and common classes contribute equally during training.}}{7}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:placeholder}{{4}{7}{Class imbalance problem and LARGO solution: weighted random sampling ensures rare and common classes contribute equally during training}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Data Splitting and Preprocessing}{7}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The Reverse Generative Process ($p_\theta $)}}{7}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:Reverse_Generative}{{3}{7}{The Reverse Generative Process ($p_\theta $)}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}The Optimization Objective}{7}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Classifier-Free Guidance (CFG)}{7}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Dataset Analysis: The Oxford 102 Manifold}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Botanical and Visual Statistics}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Dataset Statistics and Implications}}{8}{table.caption.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The Class Imbalance Challenge}{8}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Data Splitting and Preprocessing}{8}{subsection.4.3}\protected@file@percent }
 \citation{dhariwal2021}
 \citation{ho2021}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Conditional Implementation Strategy}{8}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Evolution of Conditioning: Classifier vs. Classifier-Free}{8}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Theoretical Derivations of CFG}{8}{subsection.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces CFG mechanism: conditional score $\epsilon _\theta (x_t, t, y)$ and unconditional score $\epsilon _\theta (x_t, t, \emptyset )$ combined with guidance scale $w$ to produce $\tilde  {\epsilon }_\theta (x_t, t, y)$.}}{8}{figure.caption.7}\protected@file@percent }
-\newlabel{fig:placeholder}{{5}{8}{CFG mechanism: conditional score $\epsilon _\theta (x_t, t, y)$ and unconditional score $\epsilon _\theta (x_t, t, \emptyset )$ combined with guidance scale $w$ to produce $\tilde {\epsilon }_\theta (x_t, t, y)$}{figure.caption.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Geometric interpretation of classifier-free guidance (CFG).}}{9}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:placeholder}{{6}{9}{Geometric interpretation of classifier-free guidance (CFG)}{figure.caption.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Implementation of Embeddings}{9}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Architectural Specifications: The LARGO U-Net}{9}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Macro-Architecture Design}{10}{subsection.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces U-Net macro-architecture with multi-scale encoder-decoder, residual blocks, attention, and up/downsampling for $64 \times 64$ input.}}{10}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:macro-architecture}{{7}{10}{U-Net macro-architecture with multi-scale encoder-decoder, residual blocks, attention, and up/downsampling for $64 \times 64$ input}{figure.caption.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces LARGO U-Net Configuration}}{10}{table.caption.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The Residual Block (ResBlock)}{10}{subsection.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Residual Block (ResBlock) showing feature map and time/class embedding integration with skip connection.}}{11}{figure.caption.11}\protected@file@percent }
-\newlabel{fig:ResBlock}{{8}{11}{Residual Block (ResBlock) showing feature map and time/class embedding integration with skip connection}{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Attention Mechanisms}{11}{subsection.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces The Reverse Generative Process ($p_\theta $)}}{12}{figure.caption.12}\protected@file@percent }
-\newlabel{fig:Reverse_Process}{{9}{12}{The Reverse Generative Process ($p_\theta $)}{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Training Dynamics and Algorithm}{12}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Hyperparameter Configuration}{12}{subsection.6.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Training Hyperparameters}}{12}{table.caption.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The Training Algorithm}{12}{subsection.6.2}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces LARGO Training Step}}{13}{algorithm.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Challenges in Training}{13}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Evaluation Methodology}{13}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Fréchet Inception Distance (FID)}{13}{subsection.7.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Fréchet Inception Distance (FID) evaluation pipeline.}}{14}{figure.caption.14}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Side-by-side comparison of Real Data (Top) vs. Generated Samples (Bottom). Despite the high numerical FID, the generated images exhibit coherent flower structures, correct class coloring, and distinct petals, demonstrating that the model has successfully learned the semantic concepts.}}{15}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:comparison}{{11}{15}{Side-by-side comparison of Real Data (Top) vs. Generated Samples (Bottom). Despite the high numerical FID, the generated images exhibit coherent flower structures, correct class coloring, and distinct petals, demonstrating that the model has successfully learned the semantic concepts}{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Kernel Inception Distance (KID)}{15}{subsection.7.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces KID Evaluation results. The metric confirms that the generated samples (Bottom) are statistically similar to the real class-matched samples (Top) with a high degree of confidence.}}{15}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:kid_eval}{{12}{15}{KID Evaluation results. The metric confirms that the generated samples (Bottom) are statistically similar to the real class-matched samples (Top) with a high degree of confidence}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Qualitative Analysis}{16}{subsection.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.1}Latent Space Interpolation}{16}{subsubsection.7.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Latent space interpolation. The smooth semantic transition between flower types indicates the model has learned a continuous, meaningful latent manifold rather than discrete memorization.}}{16}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:interpolation}{{13}{16}{Latent space interpolation. The smooth semantic transition between flower types indicates the model has learned a continuous, meaningful latent manifold rather than discrete memorization}{figure.caption.17}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {7.3.2}Visual Quality Assessment}{16}{subsubsection.7.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Why Inception Score (IS) was Excluded}{16}{subsection.7.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Visual Turing Test (Qualitative)}{17}{subsection.7.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Results and Discussion}{17}{section.8}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Quantitative Benchmark}{17}{subsection.8.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Quantitative comparison of our model against state-of-the-art baselines. Note the disparity in Evaluation Sample Size ($N$), which heavily biases the FID metric.}}{17}{table.caption.18}\protected@file@percent }
-\newlabel{tab:benchmark}{{4}{17}{Quantitative comparison of our model against state-of-the-art baselines. Note the disparity in Evaluation Sample Size ($N$), which heavily biases the FID metric}{table.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Analysis of Results}{17}{subsection.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Ablation Study: Sampling Efficiency}{18}{subsection.8.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Qualitative Analysis}{18}{subsection.8.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.1}Success Cases}{18}{subsubsection.8.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.4.2}Limitations and Failure Modes}{18}{subsubsection.8.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion and Future Directions}{19}{section.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix A: Mathematical Derivation of the Posterior Mean}{19}{appendix.A}\protected@file@percent }
+\citation{ho2021}
+\citation{dhariwal2021}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conditional Implementation Strategy}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Evolution of Conditioning: Classifier vs. Classifier-Free}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Theoretical Derivations of CFG}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces CFG mechanism: conditional score $\epsilon _\theta (x_t, t, y)$ and unconditional score $\epsilon _\theta (x_t, t, \emptyset )$ combined with guidance scale $w$ to produce $\tilde  {\epsilon }_\theta (x_t, t, y)$.}}{10}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:placeholder}{{4}{10}{CFG mechanism: conditional score $\epsilon _\theta (x_t, t, y)$ and unconditional score $\epsilon _\theta (x_t, t, \emptyset )$ combined with guidance scale $w$ to produce $\tilde {\epsilon }_\theta (x_t, t, y)$}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Geometric interpretation of classifier-free guidance (CFG).}}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:placeholder}{{5}{10}{Geometric interpretation of classifier-free guidance (CFG)}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Implementation of Embeddings}{10}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Architectural Specifications: The LARGO U-Net}{11}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Macro-Architecture Design}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces U-Net macro-architecture with multi-scale encoder-decoder, residual blocks, attention, and up/downsampling for $64 \times 64$ input.}}{12}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:macro-architecture}{{6}{12}{U-Net macro-architecture with multi-scale encoder-decoder, residual blocks, attention, and up/downsampling for $64 \times 64$ input}{figure.caption.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces LARGO U-Net Configuration}}{12}{table.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The Residual Block (ResBlock)}{12}{subsection.6.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Residual Block (ResBlock) showing feature map and time/class embedding integration with skip connection.}}{13}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:ResBlock}{{7}{13}{Residual Block (ResBlock) showing feature map and time/class embedding integration with skip connection}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Attention Mechanisms}{13}{subsection.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces The Reverse Generative Process ($p_\theta $)}}{14}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:Reverse_Process}{{8}{14}{The Reverse Generative Process ($p_\theta $)}{figure.caption.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Training Dynamics and Algorithm}{14}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Hyperparameter Configuration}{14}{subsection.7.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Training Hyperparameters}}{14}{table.caption.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}The Training Algorithm}{14}{subsection.7.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces LARGO Training Step}}{15}{algorithm.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Challenges in Training}{15}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Evaluation Methodology}{15}{section.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Fréchet Inception Distance (FID)}{16}{subsection.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Statistical Analysis of the FID Discrepancy. \textbf  {Top:} Randomly sampled Real vs. Generated images show strong semantic alignment (correct shapes/colors). \textbf  {Bottom:} The pixel intensity histograms reveal a "Variance Gap." Real images (Green) have high contrast/variance, while Generated images (Purple) are more concentrated, reflecting the texture smoothing inherent to diffusion models. This variance drop ($\Sigma $) inflates the FID score.}}{16}{figure.caption.12}\protected@file@percent }
+\newlabel{fig:fid_analysis}{{9}{16}{Statistical Analysis of the FID Discrepancy. \textbf {Top:} Randomly sampled Real vs. Generated images show strong semantic alignment (correct shapes/colors). \textbf {Bottom:} The pixel intensity histograms reveal a "Variance Gap." Real images (Green) have high contrast/variance, while Generated images (Purple) are more concentrated, reflecting the texture smoothing inherent to diffusion models. This variance drop ($\Sigma $) inflates the FID score}{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Kernel Inception Distance (KID)}{16}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Qualitative Analysis}{17}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.1}Latent Space Interpolation}{17}{subsubsection.8.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Latent space interpolation. The smooth semantic transition between flower types indicates the model has learned a continuous, meaningful latent manifold rather than discrete memorization.}}{17}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:interpolation}{{10}{17}{Latent space interpolation. The smooth semantic transition between flower types indicates the model has learned a continuous, meaningful latent manifold rather than discrete memorization}{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.3.2}Visual Quality Assessment}{17}{subsubsection.8.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Visual Turing Test (Qualitative)}{17}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Results and Discussion}{18}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Quantitative Benchmark}{18}{subsection.9.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Quantitative comparison of our model against state-of-the-art baselines. Note the disparity in Evaluation Sample Size ($N$), which heavily biases the FID metric.}}{18}{table.caption.14}\protected@file@percent }
+\newlabel{tab:benchmark}{{4}{18}{Quantitative comparison of our model against state-of-the-art baselines. Note the disparity in Evaluation Sample Size ($N$), which heavily biases the FID metric}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Analysis of Results}{18}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}Ablation Study: Sampling Efficiency}{19}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.4}Qualitative Analysis}{19}{subsection.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.4.1}Success Cases}{19}{subsubsection.9.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {9.4.2}Limitations and Failure Modes}{19}{subsubsection.9.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Conclusion and Future Directions}{20}{section.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix A: Mathematical Derivation of the Posterior Mean}{20}{appendix.A}\protected@file@percent }
 \bibcite{ho2020}{1}
 \bibcite{arxiv2006}{2}
 \bibcite{oxford102}{3}
@@ -115,4 +136,7 @@
 \bibcite{medium_niharika}{28}
 \bibcite{arxiv_structure}{29}
 \bibcite{arxiv_tuning}{30}
-\gdef \@abspage@last{22}
+\bibcite{fgia_survey}{31}
+\bibcite{projected_gan}{32}
+\bibcite{stylegan}{33}
+\gdef \@abspage@last{23}

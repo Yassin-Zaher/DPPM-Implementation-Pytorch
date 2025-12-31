@@ -4,43 +4,43 @@
 \contentsline {subsection}{\numberline {1.2}The LARGO Initiative}{4}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Project Objectives}{4}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Related Work}{4}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Generative Models in Computer Vision}{4}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Diffusion Models vs. GANs}{5}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Fine-Grained Image Analysis (FGIA)}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.1}General Generative Models}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Rise of Diffusion (DDPM \& DDIM)}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Current Benchmarks on Oxford-102}{5}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Theoretical Framework: The Physics of Diffusion}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}The Forward Diffusion Process ($q$)}{5}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}The Reverse Generative Process ($p_\theta $)}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.1}The Forward Diffusion Process ($q$)}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Reverse Generative Process ($p_\theta $)}{7}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}The Optimization Objective}{7}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Classifier-Free Guidance (CFG)}{7}{subsection.3.4}%
-\contentsline {section}{\numberline {4}Dataset Analysis: The Oxford 102 Manifold}{7}{section.4}%
+\contentsline {subsection}{\numberline {3.4}Classifier-Free Guidance (CFG)}{8}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Dataset Analysis: The Oxford 102 Manifold}{8}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Botanical and Visual Statistics}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}The Class Imbalance Challenge}{8}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Data Splitting and Preprocessing}{8}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conditional Implementation Strategy}{9}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Evolution of Conditioning: Classifier vs. Classifier-Free}{9}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Theoretical Derivations of CFG}{9}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Implementation of Embeddings}{10}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Architectural Specifications: The LARGO U-Net}{11}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Macro-Architecture Design}{11}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The Residual Block (ResBlock)}{12}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Attention Mechanisms}{13}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Training Dynamics and Algorithm}{14}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Hyperparameter Configuration}{14}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}The Training Algorithm}{14}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Challenges in Training}{15}{subsection.7.3}%
-\contentsline {section}{\numberline {8}Evaluation Methodology}{15}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Fréchet Inception Distance (FID)}{16}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Kernel Inception Distance (KID)}{16}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Qualitative Analysis}{17}{subsection.8.3}%
-\contentsline {subsubsection}{\numberline {8.3.1}Latent Space Interpolation}{17}{subsubsection.8.3.1}%
-\contentsline {subsubsection}{\numberline {8.3.2}Visual Quality Assessment}{17}{subsubsection.8.3.2}%
-\contentsline {subsection}{\numberline {8.4}Visual Turing Test (Qualitative)}{17}{subsection.8.4}%
-\contentsline {section}{\numberline {9}Results and Discussion}{18}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Quantitative Benchmark}{18}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}Analysis of Results}{18}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}Ablation Study: Sampling Efficiency}{19}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}Qualitative Analysis}{19}{subsection.9.4}%
-\contentsline {subsubsection}{\numberline {9.4.1}Success Cases}{19}{subsubsection.9.4.1}%
-\contentsline {subsubsection}{\numberline {9.4.2}Limitations and Failure Modes}{19}{subsubsection.9.4.2}%
-\contentsline {section}{\numberline {10}Conclusion and Future Directions}{20}{section.10}%
-\contentsline {section}{\numberline {A}Appendix A: Mathematical Derivation of the Posterior Mean}{20}{appendix.A}%
+\contentsline {subsection}{\numberline {4.2}The Class Imbalance Challenge}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Data Splitting and Preprocessing}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Methodology}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Conditional Implementation Strategy}{10}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Evolution of Conditioning: Classifier vs. Classifier-Free}{10}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Theoretical Derivations of CFG}{10}{subsubsection.5.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.3}Implementation of Embeddings}{11}{subsubsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.2}Architectural Specifications: The LARGO U-Net}{11}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}Macro-Architecture Design}{12}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}The Residual Block (ResBlock)}{13}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}Attention Mechanisms}{14}{subsubsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.3}Training Dynamics and Algorithm}{14}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}Hyperparameter Configuration}{14}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}The Training Algorithm}{15}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}Challenges in Training}{15}{subsubsection.5.3.3}%
+\contentsline {section}{\numberline {6}Evaluation Methodology}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Metric Selection Strategy}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Fréchet Inception Distance (FID)}{16}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Kernel Inception Distance (KID)}{16}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Results and Analysis}{17}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Quantitative Benchmark}{17}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Analysis of Quantitative Results}{17}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Interpretation of KID and FID Scores}{17}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}The "Variance Gap" (Why FID is High)}{17}{subsubsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.3}Ablation Study: Sampling Efficiency}{18}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Qualitative Analysis}{18}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Success Cases}{18}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Limitations}{19}{subsubsection.7.4.2}%
+\contentsline {section}{\numberline {8}Conclusion and Future Directions}{19}{section.8}%
+\contentsline {section}{\numberline {A}Appendix A: Mathematical Derivation of the Posterior Mean}{19}{appendix.A}%

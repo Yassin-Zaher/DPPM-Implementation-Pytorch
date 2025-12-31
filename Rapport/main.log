@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  29 DEC 2025 16:09
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  31 DEC 2025 16:03
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/yassi/OneDrive/Desktop/S1/S3/Generative AI/projet-v1 - Copy/Rapport
@@ -678,10 +678,10 @@ Package babel Info: The following font families will use the default
 (babel)             Reported on input line 3.
 
 
-LaTeX Warning: Label `fig:placeholder' multiply defined.
+LaTeX Warning: Label `sd_finetune' multiply defined.
 
 
-LaTeX Warning: Label `fig:placeholder' multiply defined.
+LaTeX Warning: Label `wgan_gp_analysis' multiply defined.
 
 )
 \openout1 = main.aux
@@ -880,168 +880,167 @@ Overfull \hbox (3.9758pt too wide) in paragraph at lines 95--97
 que chal-lenges dis-tinct from face gen-er-a-tion (e.g., CelebA)
  []
 
-
-Overfull \hbox (9.94571pt too wide) in paragraph at lines 114--116
-\TU/TimesNewRoman(0)/m/n/12 The land-scape of im-age syn-the-sis has evolved fro
-m likelihood-based mod-els to ad-ver-sar-ial and diffusion-
- []
-
-
-Overfull \hbox (6.25314pt too wide) in paragraph at lines 118--119
-\TU/TimesNewRoman(0)/m/n/12 Re-cent com-par-a-tive stud-ies in-di-cate that whil
-e GANs of-fer faster in-fer-ence, Dif-fu-sion Mod-els (DDPMs)
- []
-
 [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 128.
+(hyperref)                removing `math shift' on input line 142.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 128.
+(hyperref)                removing `math shift' on input line 142.
 
-<images/Forward_Proccess.png, id=292, 2782.395pt x 914.41624pt>
+[5]
+<images/Forward_Proccess.png, id=309, 2782.395pt x 914.41624pt>
 File: images/Forward_Proccess.png Graphic file (type png)
 <use images/Forward_Proccess.png>
-Package luatex.def Info: images/Forward_Proccess.png  used on input line 140.
+Package luatex.def Info: images/Forward_Proccess.png  used on input line 154.
 (luatex.def)             Requested size: 483.69687pt x 158.95087pt.
-[5]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 157.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 157.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\theta' on input line 157.
+(hyperref)                removing `subscript' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 157.
+(hyperref)                removing `\theta' on input line 171.
 
-<reverse_t.png, id=307, 2119.92pt x 863.47594pt>
-File: reverse_t.png Graphic file (type png)
-<use reverse_t.png>
-Package luatex.def Info: reverse_t.png  used on input line 171.
-(luatex.def)             Requested size: 483.69687pt x 197.01422pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 171.
 
 [6<./images/Forward_Proccess.png>]
-Overfull \hbox (2.01486pt too wide) in paragraph at lines 190--191
+<reverse_t.png, id=322, 2119.92pt x 863.47594pt>
+File: reverse_t.png Graphic file (type png)
+<use reverse_t.png>
+Package luatex.def Info: reverse_t.png  used on input line 185.
+(luatex.def)             Requested size: 483.69687pt x 197.01422pt.
+ [7<./reverse_t.png>]
+Overfull \hbox (2.01486pt too wide) in paragraph at lines 204--205
 \TU/TimesNewRoman(0)/m/n/12 To en-hance the con-trol-la-bil-ity of gen-er-a-tion
  while avoid-ing the train-ing of a sep-a-rate clas-si-fier, LARGO
  []
 
-[7<./reverse_t.png>] [8]
-<images/CFG.png, id=350, 2119.92pt x 775.39688pt>
+[8] [9]
+<images/CFG.png, id=363, 2119.92pt x 775.39688pt>
 File: images/CFG.png Graphic file (type png)
 <use images/CFG.png>
-Package luatex.def Info: images/CFG.png  used on input line 272.
+Package luatex.def Info: images/CFG.png  used on input line 291.
 (luatex.def)             Requested size: 386.95897pt x 141.52945pt.
- [9]
-<images/CFG_GOE.png, id=360, 2826.56pt x 1541.76pt>
+<images/CFG_GOE.png, id=364, 2826.56pt x 1541.76pt>
 File: images/CFG_GOE.png Graphic file (type png)
 <use images/CFG_GOE.png>
-Package luatex.def Info: images/CFG_GOE.png  used on input line 282.
+Package luatex.def Info: images/CFG_GOE.png  used on input line 300.
 (luatex.def)             Requested size: 338.58632pt x 184.67386pt.
- [10<./images/CFG.png><./images/CFG_GOE.png>]
-<Unet.png, id=372, 2826.56pt x 1541.76pt>
+ [10<./images/CFG.png>] [11<./images/CFG_GOE.png>]
+<Unet.png, id=388, 2826.56pt x 1541.76pt>
 File: Unet.png Graphic file (type png)
 <use Unet.png>
-Package luatex.def Info: Unet.png  used on input line 316.
+Package luatex.def Info: Unet.png  used on input line 336.
 (luatex.def)             Requested size: 483.69687pt x 263.83661pt.
-
-[11] [12<./Unet.png>]
-<images/res_block.png, id=389, 2826.56pt x 1541.76pt>
+ [12<./Unet.png>]
+<images/res_block.png, id=395, 2826.56pt x 1541.76pt>
 File: images/res_block.png Graphic file (type png)
 <use images/res_block.png>
-Package luatex.def Info: images/res_block.png  used on input line 365.
+Package luatex.def Info: images/res_block.png  used on input line 381.
 (luatex.def)             Requested size: 435.32422pt x 237.44118pt.
-<images/attentionBlock.png, id=390, 2826.56pt x 1541.76pt>
+
+[13<./images/res_block.png>]
+<images/attentionBlock.png, id=406, 2826.56pt x 1541.76pt>
 File: images/attentionBlock.png Graphic file (type png)
 <use images/attentionBlock.png>
-Package luatex.def Info: images/attentionBlock.png  used on input line 384.
+Package luatex.def Info: images/attentionBlock.png  used on input line 399.
 (luatex.def)             Requested size: 290.22107pt x 158.30196pt.
- [13<./images/res_block.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 403--404
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--423
 []\TU/TimesNewRoman(0)/m/n/12 Bal-ance be-tween gra-di-ent sta-bil-ity and
  []
 
 
-Underfull \hbox (badness 5022) in paragraph at lines 403--404
+Underfull \hbox (badness 5022) in paragraph at lines 422--423
 \TU/TimesNewRoman(0)/m/n/12 VRAM. Small batches (16) cause noise
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 406--407
+Underfull \hbox (badness 1354) in paragraph at lines 425--426
 []\TU/TimesNewRoman(0)/m/n/12 Dif-fu-sion mod-els con-verge slowly. 500+
  []
 
+[14<./images/attentionBlock.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 415.
-[14<./images/attentionBlock.png>] [15]
-<images/fid_justification_plot_random.png, id=412, 1003.8303pt x 570.933pt>
+put line 434.
+ [15]
+Overfull \hbox (1.82277pt too wide) in paragraph at lines 495--508
+ [][] 
+ []
+
+[16]
+<images/fid_justification_plot_random.png, id=435, 1003.8303pt x 570.933pt>
 File: images/fid_justification_plot_random.png Graphic file (type png)
 <use images/fid_justification_plot_random.png>
 Package luatex.def Info: images/fid_justification_plot_random.png  used on inpu
-t line 466.
+t line 526.
 (luatex.def)             Requested size: 338.58632pt x 192.57266pt.
- [16<./images/fid_justification_plot_random.png>]
-<images/interpolation.png, id=424, 1494.58376pt x 492.84125pt>
-File: images/interpolation.png Graphic file (type png)
-<use images/interpolation.png>
-Package luatex.def Info: images/interpolation.png  used on input line 497.
-(luatex.def)             Requested size: 338.58632pt x 111.64403pt.
- [17<./images/interpolation.png>] [18]
-Overfull \hbox (9.46785pt too wide) in paragraph at lines 572--573
-\TU/TimesNewRoman(0)/m/n/12 high-frequency sur-face de-tails. Fine tex-tures suc
-h as leaf veins or pollen grains ap-pear ”smoothed”
- []
-
-[19] [20]
-Underfull \hbox (badness 4441) in paragraph at lines 622--625
+ [17] [18<./images/fid_justification_plot_random.png>] [19]
+Underfull \hbox (badness 4441) in paragraph at lines 598--601
 []\TU/TimesNewRoman(0)/m/n/12 Jonathan Ho, Ajay Jain, Pieter Abbeel.  \TU/Times
 NewRoman(0)/m/it/12 De-nois-ing Dif-fu-sion Prob-a-bilis-tic Mod-els\TU/TimesNe
 wRoman(0)/m/n/12 .
  []
 
 
-Underfull \hbox (badness 5667) in paragraph at lines 632--634
+Underfull \hbox (badness 5667) in paragraph at lines 608--610
 []\TU/TimesNewRoman(0)/m/n/12 Kag-gle: The Ox-ford Flow-ers 102 dataset.  []$\T
 U/lmtt/m/n/12 https://www.kaggle.com/datasets/
  []
 
 
-Underfull \hbox (badness 4132) in paragraph at lines 644--646
+Underfull \hbox (badness 4132) in paragraph at lines 639--641
 []\TU/TimesNewRoman(0)/m/n/12 Voxel51/Ox-ford Flow-ers102 Datasets at Hug-ging 
 Face.  []$\TU/lmtt/m/n/12 https://huggingface.co/
  []
 
-
-Underfull \hbox (badness 1968) in paragraph at lines 648--650
+[20]
+Underfull \hbox (badness 1968) in paragraph at lines 643--645
 []\TU/TimesNewRoman(0)/m/n/12 ox-ford_flow-ers102 | Ten-sor-Flow Datasets.  []$
 \TU/lmtt/m/n/12 https://www.tensorflow.org/datasets/
  []
 
 
-Underfull \hbox (badness 1205) in paragraph at lines 656--658
+Underfull \hbox (badness 1205) in paragraph at lines 651--653
 []\TU/TimesNewRoman(0)/m/it/12 De-nois-ing Dif-fu-sion Im-plicit Mod-els\TU/Tim
 esNewRoman(0)/m/n/12 .  Keras Ex-am-ples. []$\TU/lmtt/m/n/12 https://keras.io/ex
 amples/
  []
 
-[21]
+
 Underfull \hbox (badness 10000) in paragraph at lines 692--694
 []\TU/TimesNewRoman(0)/m/n/12 Red-dit r/Sta-bleD-if-fu-sion Dis-cus-sion on CFG.
   []$\TU/lmtt/m/n/12 https://www.reddit.com/r/
  []
 
-[22] (./main.aux)
+[21]
+warning  (pdf backend): ignoring duplicate destination with the name 'cite.sd_fi
+netune'
+
+Underfull \hbox (badness 10000) in paragraph at lines 775--778
+[]\TU/TimesNewRoman(0)/m/n/12 V. Sharma.  \TU/TimesNewRoman(0)/m/it/12 An-a-lyz-
+ing GAN Per-for-mance with In-cep-tion Score and FID Met-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 775--778
+\TU/TimesNewRoman(0)/m/it/12 rics\TU/TimesNewRoman(0)/m/n/12 .  Medium, To-wards
+ Data Sci-ence. []$\TU/lmtt/m/n/12 https://towardsdatascience.com/
+ []
+
+[22
+warning  (pdf backend): ignoring duplicate destination with the name 'cite.wgan_
+gp_analysis'
+] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
@@ -1051,25 +1050,21 @@ L3 programming layer <2024-01-04>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 007C8C366554A43FB979DBDFD35DFA14;9418.
+(rerunfilecheck)             Checksum: A2B85A5070E1D438469B5C3E108FA35C;9525.
 )
 
 Here is how much of LuaTeX's memory you used:
- 17641 strings out of 476497
+ 17647 strings out of 476497
  125027,1977958 words of node,token memory allocated
- 911 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 115 attribute, 57 glue_spe
-c, 59 attribute_list, 1 write, 13 pdf_action nodes
-   avail lists: 1:3,2:1180,3:328,4:29,5:320,6:79,7:6745,8:81,9:506,10:27,11:677
- 39184 multiletter control sequences out of 65536+600000
+ 935 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 119 attribute, 57 glue_spe
+c, 61 attribute_list, 1 write, 15 pdf_action nodes
+   avail lists: 1:2,2:1078,3:388,4:29,5:337,6:83,7:6849,8:81,9:586,10:27,11:677
+ 39189 multiletter control sequences out of 65536+600000
  89 fonts using 25191023 bytes
- 79i,14n,91p,1014b,596s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-warning  (pdf backend): unreferenced destination with name 'table.caption.15'
-
-warning  (pdf backend): unreferenced destination with name 'figure.caption.14'
-<C:/WINDOWS/Fonts/timesi.ttf><//?/c:/users/yassi/appdata/local/programs/miktex/f
-onts/opentype/public/lm/lmmono12-regular.otf><C:/WINDOWS/Fonts/times.ttf><C:/WIN
+ 79i,14n,91p,1014b,579s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<//?/c:/users/yassi/appdata/local/programs/miktex/fonts/opentype/public/lm/lmmon
+o12-regular.otf><C:/WINDOWS/Fonts/timesi.ttf><C:/WINDOWS/Fonts/times.ttf><C:/WIN
 DOWS/Fonts/timesbd.ttf><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1
 /public/amsfonts/cm/cmex10.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/yassi/AppData/Local/Programs/Mi
@@ -1083,9 +1078,9 @@ ers/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 y10.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (23 pages, 34034071 bytes).
+Output written on main.pdf (23 pages, 32585545 bytes).
 
-PDF statistics: 584 PDF objects out of 1000 (max. 8388607)
- 158 named destinations out of 1000 (max. 131072)
+PDF statistics: 602 PDF objects out of 1000 (max. 8388607)
+ 162 named destinations out of 1000 (max. 131072)
  361 words of extra memory for PDF output out of 10000 (max. 100000000)
 

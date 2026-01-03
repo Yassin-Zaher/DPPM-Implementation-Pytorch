@@ -80,7 +80,7 @@
 \end{wrapfigure}
 The synthesis of high-fidelity natural images remains a cornerstone challenge in computer vision, particularly in fine-grained domains characterized by high intra-class variance \cite{fgia_survey}. This report introduces LARGO, a specialized Denoising Diffusion Probabilistic Model (DDPM) framework \cite{arxiv2006} tailored for the Oxford-102 Flower dataset \cite{oxford102, kaggle_flowers}. Unlike Generative Adversarial Networks (GANs), which are often challenged by training instability and mode collapse \cite{stylegan, projected_gan}, LARGO leverages the thermodynamic-inspired principles of diffusion to iteratively refine Gaussian noise into coherent botanical structures.
 
-We provide a comprehensive theoretical and practical analysis of the LARGO system, detailing the mathematical derivations of the forward and reverse diffusion processes with a specific focus on conditional generation mechanisms. We analyze the architectural modifications required for the U-Net backbone \cite{unet_wiki} to accommodate class-conditional embeddings, ensuring semantic fidelity across 102 distinct flower species. Furthermore, we present a rigorous evaluation framework utilizing established metrics such as Fréchet Inception Distance (FID) and Kernel Inception Distance (KID) \cite{fid_wiki, ignite_fid, softwaremill}, situating LARGO’s performance within the broader landscape of state-of-the-art generative models. Our findings demonstrate that while diffusion models incur higher inference costs, they offer superior diversity and structural coherence compared to adversarial baselines.
+We provide a comprehensive theoretical and practical analysis of the LARGO system, detailing the mathematical derivations of the forward and reverse diffusion processes with a specific focus on conditional generation mechanisms. We analyze the architectural modifications required for the U-Net backbone to accommodate class-conditional embeddings, ensuring semantic fidelity across 102 distinct flower species. Furthermore, we present a rigorous evaluation framework utilizing established metrics such as Fréchet Inception Distance (FID) and Kernel Inception Distance (KID) \cite{softwaremill}, situating LARGO’s performance within the broader landscape of state-of-the-art generative models. Our findings demonstrate that while diffusion models incur higher inference costs, they offer superior diversity and structural coherence compared to adversarial baselines.
 % --- INTRODUCTION ---
 \section{Introduction}
 
@@ -312,10 +312,7 @@ The practical implementation of this conditioning involves injecting the label $
     \begin{equation}
         \text{emb}_{total} = \text{MLP}(\text{concat}(t_{emb}, v_y))
     \end{equation}
-    \item \textbf{Adaptive Group Normalization (AdaGN):} Within each residual block, the combined embedding is projected to obtain scale ($\gamma$) and shift ($\beta$) parameters which modulate the normalized feature map $h$:
-    \begin{equation}
-        \text{AdaGN}(h, y, t) = \gamma(y, t) \cdot \frac{h - \mu}{\sigma} + \beta(y, t)
-    \end{equation}
+   
     This allows the class information to globally shift the activation statistics of the feature maps, effectively telling the network ``activate the filters that look for pointed petals'' or ``suppress the filters that look for yellow centers''.
 \end{enumerate}
 
@@ -417,7 +414,7 @@ The following hyperparameters were selected based on the intersection of the DDP
         \textbf{Parameter} & \textbf{Value} & \textbf{Justification} \\
         \midrule
         Timesteps ($T$) & 1000 & Sufficient for Gaussian approximation; $T=4000$ yields diminishing returns. \\
-        Schedule & Linear & $\beta_{start} = 10^{-4}, \beta_{end} = 0.02$. \\
+        Schedule & Cosine & $\beta_{start} = 10^{-4}, \beta_{end} = 0.02$. \\
         Optimizer & AdamW & $\text{lr}=2\times 10^{-4}, \beta_1=0.9, \beta_2=0.999$, weight decay $10^{-4}$. \\
         Batch Size & 64 & Balance between gradient stability and VRAM. Small batches (16) cause noise collapse. \\
         EMA & 0.9999 & Exponential Moving Average of weights kept for sampling to smooth fluctuations. \\
@@ -561,32 +558,6 @@ The LARGO project successfully demonstrates that Denoising Diffusion Probabilist
 
 \textbf{Future Work:} To scale LARGO to photorealistic resolutions ($256 \times 256$ or $512 \times 512$), future iterations will transition to Latent Diffusion Models (LDMs). By training an autoencoder to compress images into a lower-dimensional latent space and performing diffusion there, we can decouple the computational cost from the spatial resolution. Additionally, integrating text encoders (CLIP) would allow for open-vocabulary generation (e.g., ``A blue sunflower''), pushing LARGO from a closed-set generator to a true creative tool.
 
-\appendix
-\section{Appendix A: Mathematical Derivation of the Posterior Mean}
-
-We wish to calculate $q(x_{t-1}|x_t, x_0)$. Using Bayes' rule:
-\begin{equation}
-    q(x_{t-1}|x_t, x_0) = \frac{q(x_t|x_{t-1}, x_0)q(x_{t-1}|x_0)}{q(x_t|x_0)}
-\end{equation}
-Since the process is Markovian, $q(x_t|x_{t-1}, x_0) = q(x_t|x_{t-1})$.
-
-Recall the Gaussian forms:
-\begin{enumerate}
-    \item $q(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{\alpha_t} x_{t-1}, \beta_t \mathbf{I})$
-    \item $q(x_{t-1} | x_0) = \mathcal{N}(x_{t-1}; \sqrt{\bar{\alpha}_{t-1}} x_0, (1-\bar{\alpha}_{t-1}) \mathbf{I})$
-    \item $q(x_t|x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1-\bar{\alpha}_t) \mathbf{I})$
-\end{enumerate}
-
-Substituting the probability density functions (exponentials) and comparing terms in the exponent (completing the square), we derive the mean $\tilde{\mu}_t$:
-\begin{equation}
-    \tilde{\mu}_t(x_t, x_0) = \frac{\sqrt{\bar{\alpha}_{t-1}} \beta_t}{1-\bar{\alpha}_t} x_0 + \frac{\sqrt{\alpha_t} (1-\bar{\alpha}_{t-1})}{1-\bar{\alpha}_t} x_t
-\end{equation}
-Using the reparameterization $x_0 = \frac{1}{\sqrt{\bar{\alpha}_t}}(x_t - \sqrt{1-\bar{\alpha}_t}\epsilon)$, we substitute $x_0$ out to get the expression solely in terms of $x_t$ and $\epsilon$:
-\begin{equation}
-    \mu_\theta(x_t, t) = \frac{1}{\sqrt{\alpha_t}} \left(x_t-\frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t) \right)
-\end{equation}
-This derivation proves that predicting the noise \$\epsilon\$ is mathematically equivalent to predicting the mean of the posterior distribution required to reverse the diffusion step.
-
 \begin{thebibliography}{99}
 
 \bibitem{ho2020}
@@ -608,57 +579,9 @@ Nilsback, M-E., \& Zisserman, A.
 Kaggle: The Oxford Flowers 102 dataset.
 \newblock \url{https://www.kaggle.com/datasets/waseemalastal/the-oxford-flowers-102-dataset}
 
-\bibitem{diffusion_notes}
-\textit{Lecture Notes in Probabilistic Diffusion Models}.
-\newblock arXiv:2312.10393. \url{https://arxiv.org/html/2312.10393v1}
-
 \bibitem{vae_kingma}
 \textit{An Introduction to Variational Autoencoders}
 \newblock arXiv:2312.10393. \url{https://arxiv.org/pdf/1906.02691}
-
-\bibitem{goodfellow2014}
-Ian Goodfellow, et al.
-\newblock \textit{Generative Adversarial Nets}.
-\newblock NeurIPS 2014.
-
-\bibitem{song2020ddim}
-Jiaming Song, Chenlin Meng, Stefano Ermon.
-\newblock \textit{Denoising Diffusion Implicit Models}.
-\newblock ICLR 2021. \url{https://arxiv.org/abs/2010.02502}
-
-\bibitem{azizi2023}
-Shekoofeh Azizi, et al.
-\newblock \textit{Synthetic Data from Diffusion Models Improves ImageNet Classification}.
-\newblock arXiv:2304.08466 (2023).
-
-\bibitem{learnopencv}
-\textit{An In-Depth Guide to Denoising Diffusion Probabilistic Models DDPM}.
-\newblock LearnOpenCV. \url{https://learnopencv.com/denoising-diffusion-probabilistic-models/}
-
-\bibitem{huggingface_data}
-Voxel51/Oxford Flowers102 Datasets at Hugging Face.
-\newblock \url{https://huggingface.co/datasets/Voxel51/OxfordFlowers102}
-
-\bibitem{tensorflow_data}
-oxford\_flowers102 | TensorFlow Datasets.
-\newblock \url{https://www.tensorflow.org/datasets/catalog/oxford_flowers102}
-
-\bibitem{github_split}
-Flowers-102 train split include validation split?
-\newblock GitHub pytorch-image-models Discussion \#1282.
-
-\bibitem{keras_ddim}
-\textit{Denoising Diffusion Implicit Models}.
-\newblock Keras Examples. \url{https://keras.io/examples/generative/ddim/}
-
-\bibitem{keras_ddpm}
-\textit{Denoising Diffusion Probabilistic Model}.
-\newblock Keras Examples. \url{https://keras.io/examples/generative/ddpm/}
-
-\bibitem{github_flower_diff}
-TaiDuc1001.
-\newblock \textit{Flower generator with Diffusion model (based UNET) in TensorFlow}.
-\newblock \url{https://github.com/TaiDuc1001/Flower-Diffusion-Model}
 
 \bibitem{ho2021}
 Jonathan Ho, Tim Salimans.
@@ -675,83 +598,15 @@ Prafulla Dhariwal, Alexander Nichol.
 \newblock \textit{Diffusion Models Beat GANs on Image Synthesis}.
 \newblock NeurIPS 2021.
 
-\bibitem{milvus_cfg}
-\textit{How does classifier-free guidance differ from classifier guidance?}
-\newblock Milvus.
-
-\bibitem{medium_cfg}
-Baicen Xiao.
-\newblock \textit{Understand Classifier Guidance and Classifier-free Guidance in diffusion models via Python pseudo-code}.
-\newblock Medium.
-
-\bibitem{arxiv_augmented}
-\textit{Augmented Conditioning is Enough for Effective Training Image Generation}.
-\newblock arXiv:2502.04475.
-
-\bibitem{reddit_cfg}
-Reddit r/StableDiffusion Discussion on CFG.
-\newblock \url{https://www.reddit.com/r/StableDiffusion/comments/1k0amt3/}
-
-\bibitem{milvus_cond}
-\textit{How do you implement class-conditional diffusion models?}
-\newblock Milvus.
-
-\bibitem{rexliu}
-Rex Liu.
-\newblock \textit{Class Embeddings Enter Class-conditional Diffusion Models}.
-\newblock \url{https://rexliu9.github.io/files/ceec_diffusion.pdf}
-
-\bibitem{medium_vedant}
-Vedant Jumle.
-\newblock \textit{Class conditioned diffusion models using Keras and TensorFlow}.
-\newblock Medium.
-
-\bibitem{unet_wiki}
-\textit{U-Net}.
-\newblock Wikipedia. \url{https://en.wikipedia.org/wiki/U-Net}
-
-\bibitem{huggingface_issue}
-HuggingFace Discussion: Issue with DDPM Training on Stanford Cars.
-\newblock \url{https://discuss.huggingface.co/t/issue-with-ddpm-training-on-stanford-cars/147375}
-
 \bibitem{sd_finetune}
 Al-Dahhan, et al.
 \newblock \textit{An Improved Image Generation Conditioned on Text Using Stable Diffusion Model}.
 \newblock Journal of Al-Rafidain University College, 2025. (Reports Base SD FID ~251 on Oxford-102).
 
-\bibitem{wgan_gp_analysis}
-Sharma, V.
-\newblock \textit{Analyzing GAN Performance with Inception Score and FID Metrics}.
-\newblock Medium/TowardsDataScience, 2024. (Reports WGAN-GP FID ~117 on similar datasets).
-\bibitem{github_vae_gan}
-ynyeh0221.
-\newblock \textit{Oxford-102-Flower-GAN-VAE-latent-diffusion}.
-\newblock GitHub.
-
-\bibitem{fid_wiki}
-\textit{Fréchet inception distance}.
-\newblock Wikipedia.
-
-\bibitem{ignite_fid}
-FID - PyTorch-Ignite Documentation.
-\newblock \url{https://pytorch.org/ignite/generated/ignite.metrics.FID.html}
-
 \bibitem{softwaremill}
 \textit{Evaluation metrics for generative image models}.
 \newblock SoftwareMill.
 
-\bibitem{medium_niharika}
-Niharika Ahuja.
-\newblock \textit{Inception score(IS) and Fréchet inception distance (FID) explained}.
-\newblock Medium.
-
-\bibitem{arxiv_structure}
-\textit{Structure-Guided Adversarial Training of Diffusion Models}.
-\newblock arXiv:2402.17563.
-
-\bibitem{arxiv_tuning}
-\textit{Diffusion Tuning: Transferring Diffusion Models via Chain of Forgetting}.
-\newblock arXiv:2406.00773.
 
 \bibitem{fgia_survey} Wei, X. S., et al. (2021). Fine-Grained Image Analysis with Deep Learning: A Survey. \textit{IEEE TPAMI}.
 \bibitem{projected_gan} Sauer, A., et al. (2021). Projected GANs for Converging and Scalable Image Generation. \textit{NeurIPS}.
@@ -770,11 +625,6 @@ Mikołaj Bińkowski, Danica J. Sutherland, Michael Arbel, Arthur Gretton.
 Al-Dahhan, et al.
 \newblock \textit{An Improved Image Generation Conditioned on Text Using Stable Diffusion Model}.
 \newblock Journal of Al-Rafidain University College, 2025.
-
-\bibitem{wgan_gp_analysis}
-V. Sharma.
-\newblock \textit{Analyzing GAN Performance with Inception Score and FID Metrics}.
-\newblock Medium, Towards Data Science. \url{https://towardsdatascience.com/analyzing-gan-performance-8d6973059271}
 
 \end{thebibliography}
 

@@ -41,8 +41,14 @@ EasyDict({
                             device='cuda:0', dtype=torch.float32, shape=torch.Size([1000]))
 })
 """
+
+######################
+#  Diffusion Logic Forward  + Reverse
+#######################
 class GuassianDiffusion:
-    """Gaussian diffusion process with 1) Cosine schedule for beta values (https://arxiv.org/abs/2102.09672)
+    """
+    Gaussian diffusion process with 
+    1) Cosine schedule for beta values (https://arxiv.org/abs/2102.09672)
     2) L_simple training objective from https://arxiv.org/abs/2006.11239.
     """
 
@@ -114,10 +120,10 @@ class GuassianDiffusion:
         all_scalars["beta_tilde_log"] = torch.log(all_scalars["beta_tilde"])
         return EasyDict(dict([(k, v.float()) for (k, v) in all_scalars.items()]))
 
-    def sample_from_forward_process(self, x0, t):
+    def apply_noise(self, x0, t):
         """
         Single step of the forward process, where we add noise in the image.
-        Note that we will use this paritcular realization of noise vector (eps) in training.
+        Note that we will use this realization of noise vector (eps) in training.
         """
         eps = torch.randn_like(x0)
         xt = (
@@ -126,7 +132,7 @@ class GuassianDiffusion:
         )
         return xt.float(), eps
 
-    def sample_from_reverse_process(
+    def reverse_diffusion(
         self, model, xT, timesteps=None, model_kwargs={}, ddim=False
     ):
         """Sampling images by iterating over all timesteps.
@@ -144,11 +150,12 @@ class GuassianDiffusion:
         model.eval()
         final = xT
 
-        # sub-sampling timesteps for faster sampling
+        # allows the model to "jump" through the diffusion chain
         timesteps = timesteps or self.timesteps
         new_timesteps = np.linspace(
             0, self.timesteps - 1, num=timesteps, endpoint=True, dtype=int
         )
+        #
         alpha_bar = self.scalars["alpha_bar"][new_timesteps]
         new_betas = 1 - (
             alpha_bar / torch.nn.functional.pad(alpha_bar, [1, 0], value=1.0)[:-1]
@@ -225,7 +232,7 @@ def train_one_epoch(
     for step, (images, labels) in enumerate(dataloader):
         assert (images.max().item() <= 1) and (0 <= images.min().item())
 
-        # (y = 2x - 1) scales your data from [0, 1] to [-1, 1]
+        # (y = 2x - 1) scales data from [0, 1] to [-1, 1] Making it center around 0
         images, labels = (
             2 * images.to(args.device) - 1,
             labels.to(args.device).long() if args.class_cond else None,
@@ -233,7 +240,7 @@ def train_one_epoch(
         t = torch.randint(diffusion.timesteps, (len(images),), dtype=torch.int64).to(
             args.device
         )
-        xt, eps = diffusion.sample_from_forward_process(images, t)
+        xt, eps = diffusion.apply_noise(images, t)
         pred_eps = model(xt, t, y=labels)
 
         loss = ((pred_eps - eps) ** 2).mean()
@@ -254,6 +261,9 @@ def train_one_epoch(
             logger.log(loss.item(), display=not step % 100)
 
 
+######################
+#  SAMPLING METHODS - POST TRAINING
+#######################
 def sample_N_images(
     N,
     model,
@@ -271,13 +281,9 @@ def sample_N_images(
     """
     samples, labels, num_samples = [], [], 0
     
-    # --- FIX: Check if distributed training is actually active ---
-    if dist.is_available() and dist.is_initialized():
-        num_processes, group = dist.get_world_size(), dist.group.WORLD
-        is_distributed = True
-    else:
-        num_processes, group = 1, None
-        is_distributed = False
+    # --- FIX: Check if distributed training is actually active for MULTI-GPU ENV ---
+    num_processes, group = 1, None
+    is_distributed = False
     # -------------------------------------------------------------
 
     with tqdm(total=math.ceil(N / (args.batch_size * num_processes))) as pbar:
@@ -294,28 +300,16 @@ def sample_N_images(
                 )
             else:
                 y = None
-            gen_images = diffusion.sample_from_reverse_process(
+            gen_images = diffusion.reverse_diffusion(
                 model, xT, sampling_steps, {"y": y}, args.ddim
             )
-            
-            # --- FIX: Only run distributed gather if active ---
-            if is_distributed:
-                samples_list = [torch.zeros_like(gen_images) for _ in range(num_processes)]
-                if args.class_cond:
-                    labels_list = [torch.zeros_like(y) for _ in range(num_processes)]
-                    dist.all_gather(labels_list, y, group)
-                    labels.append(torch.cat(labels_list).detach().cpu().numpy())
-
-                dist.all_gather(samples_list, gen_images, group)
-                samples.append(torch.cat(samples_list).detach().cpu().numpy())
-                num_samples += len(xT) * num_processes
-            else:
-                # Single GPU behavior: just append the local results
-                if args.class_cond:
-                    labels.append(y.detach().cpu().numpy())
-                samples.append(gen_images.detach().cpu().numpy())
-                num_samples += len(xT)
-            # --------------------------------------------------
+        
+            # Single GPU behavior
+            if args.class_cond:
+                labels.append(y.detach().cpu().numpy())
+            samples.append(gen_images.detach().cpu().numpy())
+            num_samples += len(xT)
+        # --------------------------------------------------
 
             pbar.update(1)
     samples = np.concatenate(samples).transpose(0, 2, 3, 1)[:N]
@@ -412,6 +406,9 @@ def sample_N_images_specific_class(
 
 
 def main():
+    ##################################################################################
+    #### INPUTS
+    ##################################################################################
     parser = argparse.ArgumentParser("Minimal implementation of diffusion models")
     # diffusion model
     parser.add_argument("--arch", type=str, help="Neural network architecture")
@@ -479,9 +476,12 @@ def main():
     # Sampler
     parser.add_argument("--p_drop", type=float, default=0.0,
                     help="Probability of dropping labels for classifier-free guidance.")
+    ###################################################################################################
 
 
-    # setup
+    #####################################################################################################
+    ##### setup
+    #####################################################################################################
     args = parser.parse_args()
     metadata = get_metadata(args.dataset)
     torch.backends.cudnn.benchmark = True
@@ -492,7 +492,9 @@ def main():
     if args.local_rank == 0:
         print(args)
 
+    #######################################################################
     # Creat model and diffusion process
+    #######################################################################
     model = unets.__dict__[args.arch](
         image_size=metadata.image_size,
         in_channels=metadata.num_channels,
@@ -506,6 +508,7 @@ def main():
     diffusion = GuassianDiffusion(args.diffusion_steps, args.device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr)
 
+    #############################################################################
     # load pre-trained model
     if args.pretrained_ckpt:
         print(f"Loading pretrained model from {args.pretrained_ckpt}")
@@ -527,13 +530,9 @@ def main():
 
     # distributed training
     ngpus = torch.cuda.device_count()
-    if ngpus > 1:
-        if args.local_rank == 0:
-            print(f"Using distributed training on {ngpus} gpus.")
-        args.batch_size = args.batch_size // ngpus
-        torch.distributed.init_process_group(backend="nccl", init_method="env://")
-        model = DDP(model, device_ids=[args.local_rank], output_device=args.local_rank)
 
+
+    #####################################################################################
     # sampling
     if args.sampling_only:
         if args.specific_class is not None:
@@ -574,9 +573,11 @@ def main():
         )
         return
 
+    ######################################################################################
     # Load dataset
+    ######################################################################################
     train_set = get_dataset(args.dataset, args.data_dir, metadata)
-    sampler = DistributedSampler(train_set) if ngpus > 1 else None
+    sampler = None # For Distributed training
     train_loader = DataLoader(
         train_set,
         batch_size=args.batch_size,
@@ -594,7 +595,8 @@ def main():
     # ema model
     args.ema_dict = copy.deepcopy(model.state_dict())
 
-    # lets start training the model
+    ########################################################################################
+    # TRAININg THE MODEL
     for epoch in range(args.epochs):
         if sampler is not None: # Not Distributed (Parallel Training)
             sampler.set_epoch(epoch)

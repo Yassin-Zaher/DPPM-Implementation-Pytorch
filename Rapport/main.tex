@@ -108,34 +108,55 @@ This report aims to document the complete lifecycle of the LARGO project, addres
 \end{itemize}
 
 
-\section{Related Work}
+\section{State of the Art}
 
-\subsection{General Generative Models}
-The landscape of image synthesis has evolved from likelihood-based models to adversarial approaches \cite{dhariwal2021}.
+\subsection{Foundations of Generative Synthesis}
+The advancement of generative computer vision has progressed through distinct methodological eras, evolving from explicit density estimation towards implicit adversarial inference, and finally converging on thermodynamic-inspired denoising \cite{dhariwal2021}.
 
-\textbf{Variational Autoencoders (VAEs):} Early likelihood-based models like VAEs offered stable training and good distribution coverage but often suffered from "blurriness" due to the limitations of the pixel-wise reconstruction loss \cite{vae_kingma}.
+\subsubsection{The Probabilistic Era: Explicit Density Estimation}
+The initial generation of deep generative models focused on maximizing an explicit tractable density. \textbf{Variational Autoencoders (VAEs)} exemplify this approach, utilizing a probabilistic encoder-decoder framework to map high-dimensional data into a regularized latent space.
 
-\textbf{Generative Adversarial Networks (GANs):} To address perceptual fidelity, GANs (DCGAN, StyleGAN) were introduced, prioritizing realism over mode coverage. While architectures like StyleGAN2 achieve state-of-the-art fidelity on faces, they require complex regularization to maintain stability \cite{stylegan}. On fine-grained datasets like Oxford-102 \cite{oxford102}, GANs specifically struggle with "semantic drift," where the generated flower loses its structural coherence.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/VAEs.png}
+    \caption{Schematic of the Variational Autoencoder framework. The model compresses input data $x$ into a probabilistic latent distribution $p(z|x)$ via an encoder, enforcing a regularized latent space from which the decoder reconstructs the approximation $\hat{x}$.}
+    \label{fig:vaes}
+\end{figure}
 
+By optimizing the Evidence Lower Bound (ELBO), VAEs force the encoder to learn a smooth, continuous latent manifold rather than a deterministic code. While this probabilistic bottleneck ensures excellent distribution coverage and training stability, the decoder's reliance on a pixel-wise reconstruction objective inevitably penalizes high-frequency variance. Consequently, VAEs struggle to reproduce the sharp, fine-grained textures essential for botanical realism, often yielding improved but perceptually blurry outputs \cite{vae_kingma}.
 
-\subsection{The Rise of Diffusion (DDPM \& DDIM)}
-Recent comparative studies indicate that the field is shifting towards Diffusion Models due to their superior mode coverage and training stability \cite{dhariwal2021}.
+\subsubsection{The Adversarial Shift: Implicit Learning}
+To transcend the perceptual limitations of pixel-wise loss, the field pivoted towards an implicit learning paradigm characterized by \textbf{Generative Adversarial Networks (GANs)}. Models such as DCGAN and StyleGAN introduced a minimax zero-sum game ($\min_G \max_D V(D, G)$), where a generator synthesizes samples from random noise while a discriminator acts as a trainable loss function.
 
-\textbf{Fidelity vs. Diversity:} For fine-grained tasks like bird or flower generation, diffusion models have shown a unique ability to capture subtle morphological differences that GANs often smooth over (mode collapse).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/GANS.png}
+    \caption{The adversarial architecture of GANs. A generator network $G$ synthesizes candidates from random noise $z$ to deceive a discriminator network $D$, which is simultaneously trained to distinguish between the generated samples and the true data distribution.}
+    \label{fig:Gans}
+\end{figure}
 
-\textbf{Inference Efficiency (DDPM vs. DDIM):} The primary drawback of standard Denoising Diffusion Probabilistic Models (DDPM) is computational expense, requiring iterative denoising steps ($T=1000$) \cite{arxiv2006}. However, the introduction of Denoising Diffusion Implicit Models (DDIM) has mitigated this by allowing non-Markovian sampling, effectively bridging the inference speed gap \cite{song_ddim}.
+This adversarial dynamic pushes the generator to prioritize perceptual fidelity over exact likelihood, enabling the synthesis of photorealistic details. However, this comes at the cost of stability; finding a Nash equilibrium in the high-dimensional non-convex landscape often leads to mode collapse. In fine-grained domains like Oxford-102, the generator frequently ignores the diverse tail of the distribution—such as rare flower species—to satisfy the discriminator's decision boundary \cite{stylegan, oxford102}.
+
+\subsection{The Diffusion Unification (DDPM \& DDIM)}
+Most recently, a third paradigm has emerged to resolve the stability-fidelity dilemma. Recent comparative studies indicate that \textbf{Denoising Diffusion Probabilistic Models (DDPMs)} unify the training stability of likelihood models with the perceptual fidelity of GANs \cite{dhariwal2021}.
+
+\textbf{Score Matching vs. Saddle Points:} 
+Unlike the unstable adversarial training of GANs, DDPMs rely on iterative denoising score matching. This process ensures monotonic convergence and captures subtle morphological differences in fine-grained tasks (e.g., petal texture) that GANs often smooth over \cite{arxiv2006}.
+
+\textbf{Inference Efficiency (DDPM vs. DDIM):} 
+The primary drawback of standard DDPM is computational expense, requiring a Markovian chain of iterative steps ($T=1000$) to refine Gaussian noise. However, Denoising Diffusion Implicit Models (DDIM) mitigate this by generalizing the process to a non-Markovian deterministic mapping, interpreted as a discretization of a Probability Flow ODE. This effectively bridges the inference speed gap by producing high-quality samples in fewer steps (e.g., $T=50$) \cite{song_ddim}.
 
 \textbf{Latent Diffusion Models (LDM):}
-Contemporary systems (e.g., Stable Diffusion) have further optimized this by operating in a compressed \textit{latent space} rather than pixel space. While LARGO operates in pixel space ($64 \times 64$) for educational transparency, LDMs represent the current industrial standard for high-resolution synthesis.
+Contemporary systems (e.g., Stable Diffusion) further optimize computational costs by operating in a compressed \textit{latent space} (via VQ-GANs). While LARGO operates in pixel space ($64 \times 64$) to maintain educational transparency and avoid autoencoder compression artifacts, LDMs represent the current industrial standard for high-resolution synthesis.
 
 \subsection{Current Benchmarks on Oxford-102}
-To evaluate LARGO effectively, we must compare it against the specific state-of-the-art (SOTA) models optimized for the Oxford-102 manifold.
+To evaluate LARGO effectively, we compare it against State-of-the-Art (SOTA) adversarial baselines optimized for the Oxford-102 manifold.
 
-\textbf{StyleGAN2-ADA (The GAN Benchmark):}
-Standard GANs fail on small datasets ($<10$k images) due to discriminator overfitting. Karras et al. introduced \textit{Adaptive Discriminator Augmentation} (ADA), allowing StyleGAN2 to achieve FID scores as low as $2.1$ on Oxford-102 \cite{stylegan}. This remains the "gold standard" for pure visual fidelity.
+\textbf{StyleGAN2-ADA (The Fidelity Benchmark):}
+Standard GANs fail on small datasets ($<10$k images) due to discriminator overfitting. Karras et al. introduced \textit{Adaptive Discriminator Augmentation} (ADA), which applies non-leaking transformations to strictly constrain the discriminator. This allows StyleGAN2 to achieve FID scores as low as $2.1$ on Oxford-102, setting the "gold standard" for pure visual fidelity \cite{stylegan}.
 
-\textbf{Projected GANs:}
-A recent evolution, Projected GANs, project generated and real images into a pre-trained feature space (e.g., EfficientNet) before discrimination. This accelerates convergence and improves texture stability, often outperforming StyleGAN2 on fine-grained tasks with lower computational budgets \cite{projected_gan}.
+\textbf{Projected GANs (The Efficiency Benchmark):}
+A recent evolution, Projected GANs, project generated and real images into a pre-trained feature space (e.g., EfficientNet) rather than discriminating on raw pixels. This approach accelerates convergence and improves texture stability, often outperforming StyleGAN2 on fine-grained tasks with significantly lower computational budgets \cite{projected_gan}.
 
 \section{Theoretical Framework}
 To fully grasp the implementation of LARGO, one must first establish the mathematical groundwork of diffusion models. These models are latent variable models of the form $p_\theta(x_0) := \int p_\theta(x_{0:T}) \, dx_{1:T}$, where $x_1, \dots, x_T$ are latents of the same dimensionality as the data $x_0 \sim q(x_0)$ \cite{arxiv2006}.

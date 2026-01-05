@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {2.1}General Generative Models}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}The Rise of Diffusion (DDPM \& DDIM)}{5}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Current Benchmarks on Oxford-102}{5}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Theoretical Framework: The Physics of Diffusion}{5}{section.3}%
+\contentsline {section}{\numberline {3}Theoretical Framework}{5}{section.3}%
 \contentsline {subsection}{\numberline {3.1}The Forward Diffusion Process ($q$)}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}The Reverse Generative Process ($p_\theta $)}{7}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}The Optimization Objective}{7}{subsection.3.3}%

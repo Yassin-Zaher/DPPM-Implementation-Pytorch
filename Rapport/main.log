@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  5 JAN 2026 11:10
+This is LuaHBTeX, Version 1.17.1 (MiKTeX 24.1) (format=lualatex 2025.12.5)  5 JAN 2026 13:21
  restricted system commands enabled.
  file:line:error style messages enabled.
 **"c:/Users/yassi/OneDrive/Desktop/S1/S3/Generative AI/projet-v1 - Copy/Rapport
@@ -997,8 +997,14 @@ L3 programming layer <2024-01-04>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 46BAC6E6B53879C5AF451F38BECDA46C;9042.
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: 46BAC6E6B53879C5AF451F38BECDA46C;9042
+(rerunfilecheck)             After:  53F0D97EEDF699A423043D1A1AC9AB1B;8900.
 )
 
 Here is how much of LuaTeX's memory you used:
@@ -1026,7 +1032,7 @@ ers/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb>
 y10.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Users/yassi/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (21 pages, 32556615 bytes).
+Output written on main.pdf (21 pages, 32556598 bytes).
 
 PDF statistics: 512 PDF objects out of 1000 (max. 8388607)
  122 named destinations out of 1000 (max. 131072)

@@ -137,7 +137,7 @@ Standard GANs fail on small datasets ($<10$k images) due to discriminator overfi
 \textbf{Projected GANs:}
 A recent evolution, Projected GANs, project generated and real images into a pre-trained feature space (e.g., EfficientNet) before discrimination. This accelerates convergence and improves texture stability, often outperforming StyleGAN2 on fine-grained tasks with lower computational budgets \cite{projected_gan}.
 
-\section{Theoretical Framework: The Physics of Diffusion}
+\section{Theoretical Framework}
 To fully grasp the implementation of LARGO, one must first establish the mathematical groundwork of diffusion models. These models are latent variable models of the form $p_\theta(x_0) := \int p_\theta(x_{0:T}) \, dx_{1:T}$, where $x_1, \dots, x_T$ are latents of the same dimensionality as the data $x_0 \sim q(x_0)$ \cite{arxiv2006}.
 \subsection{The Forward Diffusion Process ($q$)}
 The forward process is a fixed, approximate posterior $q(x_{1:T}|x_0)$ that gradually adds Gaussian noise to the data according to a variance schedule $\beta_1, \dots, \beta_T$. This process is a Markov chain:

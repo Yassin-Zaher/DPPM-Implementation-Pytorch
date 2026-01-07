@@ -61,13 +61,11 @@ wget https://www.robots.ox.ac.uk/~vgg/data/flowers/102/setid.mat
 ## Project structure
 ```text
 largo-diffusion/
-├── dataset.py           # Dataset management and preprocessing
+├── data.py              # Dataset management and preprocessing
 ├── unets.py             # UNet model architecture
 ├── main.py              # Main training and inference engine
 ├── app.py               # Streamlit web interface
 ├── colab.ipynb          # Google Colab code
-├── checkpoints/         # Model weights (.pt files)
-├── sampled_images/      # Generated images
 └── requirements.txt     # Python dependencies
 ```
 ## Usage
